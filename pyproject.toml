@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "homework-automation"
+version = "0.1.0"
+description = "Portable Moodle homework workflow for Codex and other agents"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "playwright>=1.50",
+  "PyYAML>=6.0",
+  "python-docx>=1.1",
+  "pymupdf>=1.24",
+]
+
+[project.optional-dependencies]
+windows = ["pywin32>=306"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+homework-automation = "homework_automation.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"homework_automation.assets" = ["*.png"]

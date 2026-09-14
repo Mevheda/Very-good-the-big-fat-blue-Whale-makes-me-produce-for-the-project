@@ -1,0 +1,43 @@
+app:
+  # The agent normally sets this during chat-led onboarding.
+  # Windows and macOS/Linux both expand the user home directory.
+  data_dir: ~/HomeworkAutomation
+
+browser:
+  # Use msedge or chrome if the browser is installed.
+  # Use chromium after running: python -m playwright install chromium
+  channel: msedge
+  executable_path: ""
+  headless: true
+  profile_dir: browser_profile
+  proxy: ""
+  timeout_seconds: 30
+
+credentials:
+  # env: read HOMEWORK_USERNAME and HOMEWORK_PASSWORD
+  # file: read [moodle] from the file below
+  provider: env
+  path: credentials.ini
+  section: moodle
+  username_env: HOMEWORK_USERNAME
+  password_env: HOMEWORK_PASSWORD
+
+site:
+  base_url: "https://moodle.example.edu"
+  # Leave empty to derive base_url + /login/index.php
+  login_url: ""
+
+submission:
+  replace_existing: true
+
+courses:
+  database:
+    name: "Database Systems"
+    course_id: "11"
+    aliases:
+      - database
+      - db
+    materials_dir: materials/database
+    # Run `homework-automation sync-course --course database`
+    # to populate this mapping from Moodle.
+    assignments: {}
